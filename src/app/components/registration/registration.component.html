@@ -1,0 +1,81 @@
+<div  fxLayoutAlign="center center" style="margin-top: 100px;">
+
+  <mat-card fxFlex=55 fxLayout="row" fxLayoutAlign="center center" 
+    style="padding-left:30px;padding-right:40px;padding-bottom: 30px;">
+    <form fxFlex=100 [formGroup]="registerForm" (ngSubmit)="register()">
+      
+      <div fxFlex=100 fxLayout="column">
+        
+        <div class="fundoo">
+          <p>
+            <span class="b">F</span>
+            <span class="r">u</span>
+            <span class="y">n</span>
+            <span class="b">D</span>
+            <span class="g">o</span>
+            <span class="r">o</span>
+            <span class="b">N</span>
+            <span class="y">o</span>
+            <span class="r">t</span>
+            <span class="g">e</span>
+            <span class="b">s</span>
+          </p>
+        </div>
+        <div >
+          <h1>Create your FunDooNotes Account</h1>
+        </div>
+        <div fxFlex=100 fxLayout="row" fxLayoutGap="10px">
+          <mat-form-field  appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" placeholder="FirstName" formControlName="firstName">
+            <mat-error>FirstName is required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" placeholder="LastName" formControlName="lastName">
+            <mat-error>LastName is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div >
+          <mat-form-field fxFlex=100 appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" placeholder="Email" formControlName="email">
+            <mat-hint>You can use letters,Numbers</mat-hint>
+            <mat-error>Email is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <h3 style="color:#1a73e8;font-weight:400;">Use my current email address instead</h3>
+       
+        <div fxFlex=100 fxLayout="row" fxLayoutGap="10px">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <mat-hint>Use 6 or more characters</mat-hint>
+            <input matInput type="text" placeholder="Password" formControlName="password"
+              [type]="hide ? 'password' : 'text'">
+            <mat-error>length 6-10 characters</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="text" placeholder="ConfirmPassword" formControlName="confirmPassword"
+              [type]="hide ? 'password' : 'text'">
+            <mat-error>password length should be 6</mat-error>
+            <mat-error>Passwords did not match</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex=100 style="padding-bottom: 30px">
+          <mat-checkbox  color="primary" (click)="hide = !hide" >Show password</mat-checkbox>
+        </div>
+        <div fxLayoutGap="55%">
+          <a routerLink="/login" style="color:#1a73e8;font-weight:500;">Sign in instead</a>
+          <button mat-raised-button color="">Next</button>
+        </div>
+      </div>
+      <div fxLayoutAlign="center center" fxLayout="column">
+        <img src="../../../assets/Sign up.jfif" height="250" width="250" />
+        <h4 style="text-align:center ;">One account. All of FundooNotes working for you.</h4>
+      </div>
+    </form>
+  </mat-card>
+</div>

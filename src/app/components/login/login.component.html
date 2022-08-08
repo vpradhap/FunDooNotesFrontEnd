@@ -1,0 +1,60 @@
+<div  fxLayoutAlign="center center" style="margin-top: 60px;border-radius: 10px;">
+
+    <mat-card fxFlex=35 fxLayout="row" fxLayoutAlign="center center">
+        <form fxFlex=100 [formGroup]="loginForm" (ngSubmit)="login()">
+
+            <div fxFlex=100 fxLayout="column">
+
+                <div fxFlex=100 fxLayoutAlign="center center" fxLayout="column">
+                    <p style="font-size: xx-large;">
+                        <span class="b">F</span>
+                        <span class="r">u</span>
+                        <span class="y">n</span>
+                        <span class="b">D</span>
+                        <span class="g">o</span>
+                        <span class="r">o</span>
+                        <span class="b">N</span>
+                        <span class="y">o</span>
+                        <span class="r">t</span>
+                        <span class="g">e</span>
+                        <span class="b">s</span>
+                    </p>
+                    <h1>Sign in</h1>
+                    <h3>Use your FunDooNotes Account</h3>
+                </div>
+
+                <div>
+                    <mat-form-field fxFlex=100 appearance="outline" style="width: 400px ">
+                        <mat-label>Email or Phone</mat-label>
+                        <input matInput type="text" placeholder="Email or Phone" formControlName="email">
+                        <mat-error>Email is required</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field fxFlex=100 appearance="outline" style="width: 400px;">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="text" placeholder="Password" formControlName="password"
+                            [type]="hide ? 'password' : 'text'">
+                        <mat-error>Password is reqiured.  Minimum 8 characters</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex=100 fxLayoutGap="38%">
+                    <mat-checkbox color="primary" (click)="hide = !hide">Show password</mat-checkbox>
+                    <a routerLink="/forgetpassword" style="color:#1a73e8;font-weight:500;">Forget password?</a>
+                </div>
+                <div style=" padding-top:40px;padding-bottom:40px;">
+                    <span>Not your computer? Use Guest mode to sign in privately.</span><br>
+                    <span style="color:#1a73e8;font-weight:500;">Learn more</span>
+                </div>
+
+                
+                <div fxLayoutGap="55%">
+                    <a routerLink="/registration" style="color:#1a73e8;font-weight:500;">Create Account</a>
+                    <button mat-raised-button color="">Next</button>
+                </div>
+            </div>
+
+        </form>
+    </mat-card>
+</div>
