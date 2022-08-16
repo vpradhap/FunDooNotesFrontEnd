@@ -8,7 +8,9 @@ import { HttpService } from '../HttpService/http.service';
 export class UserService {
 token: any;
 
-  constructor(private httpservice:HttpService) { }
+  constructor(private httpservice:HttpService) {
+    this.token = localStorage.getItem("token");
+   }
 
   Register(data: any){
     console.log(data);
@@ -41,12 +43,12 @@ token: any;
     }
     return this.httpservice.PostService('Forget',data,true,httpOptions)
   }
-  Resetpassword(data: any){
+  Resetpassword(data: any,token:any){
     console.log(data);
     let httpOptions = {
       headers: new HttpHeaders({
       'Content-type': 'application/json',
-      'Authorization': this.token
+      'Authorization': 'Bearer ' + this.token
       })
     }
     return this.httpservice.PostService('Reset',data,true,httpOptions)

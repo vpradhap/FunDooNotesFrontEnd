@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/UserService/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   hide = true;
 
-  constructor(private formBuilder: FormBuilder,private userService:UserService) { }
+  constructor(private formBuilder: FormBuilder,private userService:UserService,private snackbar:MatSnackBar,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -31,10 +34,18 @@ export class LoginComponent implements OnInit {
       }
       this.userService.Login(data).subscribe((response:any)=>{
         console.log('Login Successfull',response);
+        localStorage.setItem("token",response.data);
+        this.router.navigateByUrl('dashboard/getallnotes')
+        this.snackbar.open('Login Successfull','Ok',{duration:3000,horizontalPosition:'left'});
       },(error:any)=>{
         console.log('Login Failed',error);
+        this.snackbar.open('Login Failed','Try again',{duration:3000,horizontalPosition:'left'});
       })
     }
-    else{ return;}
+    else
+    {
+      this.snackbar.open('Fields are empty','',{duration:3000,horizontalPosition:'left'});
+      return;
+    }
   }
 }

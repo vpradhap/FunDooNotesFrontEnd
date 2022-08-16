@@ -13,7 +13,7 @@ export class HttpService {
     return this.httpClient.post(this.BaseUrl + url, data, token && httpHeadersOptions)
   }
   GetService(url: string, token: boolean, httpHeadersOptions: any) {
-    return this.httpClient.post(this.BaseUrl + url,token && httpHeadersOptions)
+    return this.httpClient.get(this.BaseUrl + url,token && httpHeadersOptions)
   }
   PutService() {
 

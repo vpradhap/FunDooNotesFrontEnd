@@ -1,0 +1,14 @@
+<div class="container" fxLayoutAlign="start center">
+    <div class="notebox" fxLayout="column" fxLayoutAlign="center start" *ngFor='let note of NoteArray'>
+        <div class="title" fxLayout="row" fxLayoutAlign="space-between center">
+            {{note.title}}
+            <button mat-icon-button matTooltip="Pin">
+                <img class="pinicon" src="../../../assets/push_pin_FILL0_wght400_GRAD0_opsz48.png" alt="pin">
+            </button>
+        </div>
+        <div class="description">
+            {{note.description}}
+        </div>
+        <app-icons></app-icons>
+    </div>
+</div>

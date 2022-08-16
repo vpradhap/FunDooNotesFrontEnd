@@ -18,6 +18,18 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ForgetpasswordComponent } from './components/forgetpassword/forgetpassword.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { CreateNoteComponent } from './components/create-note/create-note.component';
+import { DisplayNoteComponent } from './components/display-note/display-note.component';
+import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.component';
+import { IconsComponent } from './components/icons/icons.component';
+import { RouterModule } from '@angular/router';
+import { AuthguardService } from './Services/AuthGuardService/authguard.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +37,12 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrationComponent,
     LoginComponent,
     ForgetpasswordComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    DashboardComponent,
+    CreateNoteComponent,
+    DisplayNoteComponent,
+    GetAllNotesComponent,
+    IconsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +57,15 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     FlexLayoutModule,
     MatCheckboxModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatTooltipModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [AuthguardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,76 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="example-toolbar">
+        <button mat-icon-button matTooltip="Menu" (click)="snav.toggle()">
+            <!-- <mat-icon style="opacity: 0.8;">menu</mat-icon> -->
+            <img class="header-icons" src="../../../assets/menu_FILL0_wght400_GRAD0_opsz48.png">
+        </button>
+        <div>
+            <img class="Image" src="../../../assets/keep_2020q4_48dp.png">
+        </div>
+        <div>
+            <h1>FunDooNotes</h1>
+        </div>
+
+        <div class="searchbox">
+            <img class="searchicon" matTooltip="Search" src="../../../assets/search_FILL0_wght400_GRAD0_opsz48.png">
+            <input class="search" placeholder="Search" (click)="Search()">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="nav">
+            <div class="refresh">
+                <button mat-icon-button matTooltip="Refresh">
+                    <img class="header-icons" src="../../../assets/refresh_FILL0_wght400_GRAD0_opsz48.png">
+                </button>
+            </div>
+            <div class="listview">
+                <button mat-icon-button matTooltip="List view">
+                    <img class="header-icons" src="../../../assets/dns_FILL0_wght400_GRAD0_opsz48.png">
+                </button>
+                <!-- <button mat-icon-button matTooltip="Grid view" (click)="toList()" *ngIf="view">
+                    <img class="header-icons" src="">
+                </button> -->
+            </div>
+            <div>
+                <button mat-icon-button matTooltip="Settings">
+                    <img class="header-icons" src="../../../assets/settings_FILL0_wght400_GRAD0_opsz48.png">
+                </button>
+            </div>
+            <div class="LastIcons">
+                <button mat-icon-button matTooltip="Apps">
+                    <img class="header-icons" src="../../../assets/apps_FILL0_wght400_GRAD0_opsz48.png">
+                </button>
+
+                <button mat-icon-button matTooltip="Account" (click)="Account()">
+                    <img class="header-icons" src="../../../assets/account_circle_FILL0_wght400_GRAD0_opsz48.png">
+                </button>
+            </div>
+        </div>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <mat-nav-list class="sidenav">
+                <a mat-list-item routerLink="">
+                    <img class="icon" src="../../../assets/lightbulb_FILL0_wght400_GRAD0_opsz48.png" alt="Notes">
+                    Notes</a>
+                <a mat-list-item routerLink="">
+                    <img class="icon" src="../../../assets/notifications_FILL0_wght400_GRAD0_opsz48.png"
+                        alt="Remainder">
+                    Remainders</a>
+                <a mat-list-item routerLink="">
+                    <img class="icon" src="../../../assets/edit_FILL0_wght400_GRAD0_opsz48.png" alt="Edit labels">
+                    Edit labels</a>
+                <a mat-list-item routerLink="">
+                    <img class="icon" src="../../../assets/archive_FILL0_wght400_GRAD0_opsz48.png" alt="Archive">
+                    Archive</a>
+                <a mat-list-item routerLink="">
+                    <img class="icon" src="../../../assets/delete_FILL0_wght400_GRAD0_opsz48.png" alt="Trash">
+                    Trash</a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

@@ -1,0 +1,37 @@
+<div class="container" fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="note" fxLayout="column" fxLayoutAlign="center start">
+        <form [formGroup]="noteForm" (ngSubmit)="CreateNote()">
+            <div class="notetitle" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="show">
+                <input class="title" type="text" placeholder="Title" formControlName="Title">
+                <button mat-icon-button matTooltip="Pin" (click)="Pin()">
+                    <img class="pinicon" src="../../../assets/push_pin_FILL0_wght400_GRAD0_opsz48.png" alt="pin">
+                </button>
+            </div>
+
+            <div *ngIf="!show || show" (click)="Expand()" fxLayout="row" >
+                <input class="notebox" placeholder="Write note here ..." formControlName="Description">
+                <div *ngIf="!show">
+                    <button mat-icon-button matTooltip="New list">
+                        <img class="icon" src="../../../assets/check_box_FILL0_wght400_GRAD0_opsz48.png"
+                            alt="New list">
+                    </button>
+                    <button mat-icon-button matTooltip="Note with drawing">
+                        <img class="icon" src="../../../assets/brush_FILL0_wght400_GRAD0_opsz48.png"
+                            alt="Note with drawing">
+                    </button>
+                    <button mat-icon-button matTooltip="Note with image">
+                        <img class="icon" src="../../../assets/image_FILL0_wght400_GRAD0_opsz48.png"
+                            alt="Note with image">
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="icons" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="show">
+            <app-icons></app-icons>
+            <div class="close">
+                <button mat-button (click)="CreateNote()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

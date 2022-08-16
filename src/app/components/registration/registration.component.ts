@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/UserService/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registration',
@@ -13,7 +14,7 @@ export class RegistrationComponent implements OnInit {
   submitted = false;
   hide = true;
 
-  constructor(private formBuilder: FormBuilder,private userService:UserService) { }
+  constructor(private formBuilder: FormBuilder,private userService:UserService,private snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -37,10 +38,16 @@ export class RegistrationComponent implements OnInit {
       }
       this.userService.Register(data).subscribe((response:any)=>{
         console.log('Registration Successfull',response);
+        this.snackbar.open('Registration Successfull','Ok',{duration:3000,horizontalPosition:'left'});
       },(error:any)=>{
         console.log('Registration Failed',error);
+        this.snackbar.open('Registration Failed','Try again',{duration:3000,horizontalPosition:'left'});
       })
     }
-    else{ return;}
+    else
+    { 
+      this.snackbar.open('Fields are empty','',{duration:3000,horizontalPosition:'left'});
+      return;
+    }
   }
 }
