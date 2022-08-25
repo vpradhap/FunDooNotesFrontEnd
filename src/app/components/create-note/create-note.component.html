@@ -3,7 +3,7 @@
         <form [formGroup]="noteForm" (ngSubmit)="CreateNote()">
             <div class="notetitle" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="show">
                 <input class="title" type="text" placeholder="Title" formControlName="Title">
-                <button mat-icon-button matTooltip="Pin" (click)="Pin()">
+                <button mat-icon-button matTooltip="Pin" >
                     <img class="pinicon" src="../../../assets/push_pin_FILL0_wght400_GRAD0_opsz48.png" alt="pin">
                 </button>
             </div>

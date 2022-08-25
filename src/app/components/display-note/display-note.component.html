@@ -1,14 +1,18 @@
-<div class="container" fxLayoutAlign="start center">
-    <div class="notebox" fxLayout="column" fxLayoutAlign="center start" *ngFor='let note of NoteArray'>
-        <div class="title" fxLayout="row" fxLayoutAlign="space-between center">
+<div class="container" fxLayoutAlign="start center" >
+    <div class="notebox" fxLayout="column" fxLayoutAlign="center start"
+        *ngFor='let note of NoteArray | filter : searchString' [style.background]="note.color">
+        <div class="title" fxLayout="row" fxLayoutAlign="space-between center" (click)="openDialog(note)">
             {{note.title}}
-            <button mat-icon-button matTooltip="Pin">
+            <button mat-icon-button matTooltip="Pin" *ngIf="!note.trash">
                 <img class="pinicon" src="../../../assets/push_pin_FILL0_wght400_GRAD0_opsz48.png" alt="pin">
             </button>
         </div>
-        <div class="description">
+        <div class="description" (click)="openDialog(note)">
             {{note.description}}
         </div>
-        <app-icons></app-icons>
+        <div>
+            {{note.noteID}}
+        </div>
+        <app-icons (autorefresh)="Reload($event)" [noteObj]="note"></app-icons>
     </div>
 </div>

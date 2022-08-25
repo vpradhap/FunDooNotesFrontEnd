@@ -15,10 +15,11 @@ export class HttpService {
   GetService(url: string, token: boolean, httpHeadersOptions: any) {
     return this.httpClient.get(this.BaseUrl + url,token && httpHeadersOptions)
   }
-  PutService() {
-
+  PutService(url: string, data: any, token: boolean, httpHeadersOptions: any) {
+    console.log(data);
+    return this.httpClient.put(this.BaseUrl + url, data, token && httpHeadersOptions)
   }
-  DeleteService() {
-
+  DeleteService(url: string, token: boolean, httpHeadersOptions: any) {
+    return this.httpClient.delete(this.BaseUrl + url,token && httpHeadersOptions)
   }
 }

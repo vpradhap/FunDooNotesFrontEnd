@@ -1,0 +1,16 @@
+<div fxLayout="column" fxLayoutAlign="center start" [style.background]="color">
+  <div class="title" fxLayout="row" fxLayoutAlign="space-between center">
+    <input type="text" [(ngModel)]="title">
+    <button mat-icon-button matTooltip="Pin">
+      <img class="pinicon" src="../../../assets/push_pin_FILL0_wght400_GRAD0_opsz48.png" alt="pin">
+    </button>
+  </div>
+
+  <div class="description">
+    <textarea [(ngModel)]="description"></textarea>
+  </div>
+  <div class="icons" fxLayout="row" fxLayoutAlign="space-between center">
+    <app-icons [noteObj]="data" (autorefresh)="Reload($event)"></app-icons>
+    <button mat-button (click)="Update()">Close</button>
+  </div>
+</div>

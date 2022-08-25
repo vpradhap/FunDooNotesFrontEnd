@@ -30,6 +30,12 @@ import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.c
 import { IconsComponent } from './components/icons/icons.component';
 import { RouterModule } from '@angular/router';
 import { AuthguardService } from './Services/AuthGuardService/authguard.service';
+import { UpdatenotesComponent } from './components/updatenotes/updatenotes.component';
+import { TrashnotesComponent } from './components/trashnotes/trashnotes.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import { ArchiveNotesComponent } from './components/archive-notes/archive-notes.component';
+import { FilterPipe } from './Pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -42,7 +48,11 @@ import { AuthguardService } from './Services/AuthGuardService/authguard.service'
     CreateNoteComponent,
     DisplayNoteComponent,
     GetAllNotesComponent,
-    IconsComponent
+    IconsComponent,
+    UpdatenotesComponent,
+    TrashnotesComponent,
+    ArchiveNotesComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -63,7 +73,9 @@ import { AuthguardService } from './Services/AuthGuardService/authguard.service'
     MatToolbarModule,
     MatListModule,
     MatTooltipModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    MatMenuModule
   ],
   providers: [AuthguardService],
   bootstrap: [AppComponent]

@@ -1,2 +1,2 @@
-<app-create-note></app-create-note>
-<app-display-note [NoteArray]="NotesList"></app-display-note>
+<app-create-note (autorefreshs)="GetAllNote()"></app-create-note>
+<app-display-note (reload)="reload($event)" (update)="update()" [NoteArray]="NotesList" ></app-display-note>

@@ -1,24 +1,47 @@
 <div fxLayout="row" fxLayoutAlign="start center">
     <div class="icon-row" fxLayout="row" fxLayoutAlign="space-around center">
-        <button mat-icon-button matTooltip="Remind me">
+        <button mat-icon-button matTooltip="Remind me" *ngIf="!isTrash">
             <img src="../../../assets/add_alert_FILL0_wght400_GRAD0_opsz48.png">
         </button>
-        <button mat-icon-button matTooltip="Collaborator">
+        <button mat-icon-button matTooltip="Collaborator" *ngIf="!isTrash">
             <img src="../../../assets/person_add_FILL0_wght400_GRAD0_opsz48.png">
         </button>
-        <button mat-icon-button matTooltip="Background options">
+        <button mat-icon-button matTooltip="Background options" [matMenuTriggerFor]="color" *ngIf="!isTrash">
             <img src="../../../assets/palette_FILL0_wght400_GRAD0_opsz48.png">
         </button>
-        <button mat-icon-button matTooltip="Add image">
+        <mat-menu #color="matMenu">
+            <div fxLayout="row wrap" style=" width:180px;">
+                <div *ngFor="let color of colorArray" class="bg-color">
+                    <button mat-mini-fab [matTooltip]="color.name" [style.background]="color.Colorcode"
+                        (click)="ChangeColor(color.Colorcode)"></button>
+                </div>
+            </div>
+        </mat-menu>
+        <button mat-icon-button matTooltip="Add image" *ngIf="!isTrash">
             <img src="../../../assets/image_FILL0_wght400_GRAD0_opsz48.png">
         </button>
-        <button mat-icon-button matTooltip="Archive">
+        <button mat-icon-button matTooltip="Archive" *ngIf="!isTrash && !isArchive" (click)="ArchiveNote()">
             <img src="../../../assets/archive_FILL0_wght400_GRAD0_opsz48.png">
         </button>
+        <button mat-icon-button matTooltip="Unarchive" *ngIf="!isTrash && isArchive" (click)="ArchiveNote()">
+            <img src="../../../assets/unarchive_FILL0_wght400_GRAD0_opsz48.png">
+        </button>
+        <div *ngIf="isTrash">
+            <button mat-icon-button matTooltip="Delete forever" (click)="DeleteForever()">
+                <img src="../../../assets/delete_forever_FILL0_wght400_GRAD0_opsz48.png">
+            </button>
+            <button mat-icon-button matTooltip="Restore" (click)="Trash()">
+                <img src="../../../assets/restore_from_trash_FILL0_wght400_GRAD0_opsz48.png">
+            </button>
+        </div>
         <div>
-            <button mat-icon-button matTooltip="More">
+            <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="menu" *ngIf="!isTrash">
                 <img src="../../../assets/more_vert_FILL0_wght400_GRAD0_opsz48.png">
             </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="Trash()">Delete</button>
+                <button mat-menu-item>Add Label</button>
+            </mat-menu>
         </div>
     </div>
 </div>

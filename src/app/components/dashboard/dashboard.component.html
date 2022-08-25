@@ -1,7 +1,6 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
     <mat-toolbar class="example-toolbar">
         <button mat-icon-button matTooltip="Menu" (click)="snav.toggle()">
-            <!-- <mat-icon style="opacity: 0.8;">menu</mat-icon> -->
             <img class="header-icons" src="../../../assets/menu_FILL0_wght400_GRAD0_opsz48.png">
         </button>
         <div>
@@ -13,7 +12,7 @@
 
         <div class="searchbox">
             <img class="searchicon" matTooltip="Search" src="../../../assets/search_FILL0_wght400_GRAD0_opsz48.png">
-            <input class="search" placeholder="Search" (click)="Search()">
+            <input class="search" placeholder="Search" (keyup)="Search($event)">
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="nav">
             <div class="refresh">
@@ -39,9 +38,12 @@
                     <img class="header-icons" src="../../../assets/apps_FILL0_wght400_GRAD0_opsz48.png">
                 </button>
 
-                <button mat-icon-button matTooltip="Account" (click)="Account()">
+                <button mat-icon-button matTooltip="Account" [matMenuTriggerFor]="logout">
                     <img class="header-icons" src="../../../assets/account_circle_FILL0_wght400_GRAD0_opsz48.png">
                 </button>
+                <mat-menu  #logout="matMenu">
+                    <button mat-button (click)="Account()" >LOGOUT</button>
+                </mat-menu>
             </div>
         </div>
     </mat-toolbar>
@@ -50,7 +52,7 @@
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
             fixedTopGap="56">
             <mat-nav-list class="sidenav">
-                <a mat-list-item routerLink="">
+                <a mat-list-item routerLink="getallnotes">
                     <img class="icon" src="../../../assets/lightbulb_FILL0_wght400_GRAD0_opsz48.png" alt="Notes">
                     Notes</a>
                 <a mat-list-item routerLink="">
@@ -60,10 +62,10 @@
                 <a mat-list-item routerLink="">
                     <img class="icon" src="../../../assets/edit_FILL0_wght400_GRAD0_opsz48.png" alt="Edit labels">
                     Edit labels</a>
-                <a mat-list-item routerLink="">
+                <a mat-list-item routerLink="archive">
                     <img class="icon" src="../../../assets/archive_FILL0_wght400_GRAD0_opsz48.png" alt="Archive">
                     Archive</a>
-                <a mat-list-item routerLink="">
+                <a mat-list-item routerLink="trash">
                     <img class="icon" src="../../../assets/delete_FILL0_wght400_GRAD0_opsz48.png" alt="Trash">
                     Trash</a>
             </mat-nav-list>

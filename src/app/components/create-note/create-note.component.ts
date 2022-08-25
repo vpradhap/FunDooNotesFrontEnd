@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NoteService } from 'src/app/Services/NoteService/note.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CreateNoteComponent implements OnInit {
   show = false;
   noteForm!: FormGroup;
+  @Output() autorefreshs = new EventEmitter<any>();
 
   constructor(private formBuilder:FormBuilder,private noteService:NoteService,private snackbar:MatSnackBar) { }
 
@@ -19,10 +20,6 @@ export class CreateNoteComponent implements OnInit {
       Title:['',Validators.required],
       Description:['',Validators.required],
     });
-  }
-
-  Expand(){
-    this.show=true;
   }
 
   CreateNote(){
@@ -34,6 +31,8 @@ export class CreateNoteComponent implements OnInit {
       }
       this.noteService.Create(data).subscribe((response:any)=>{
         console.log('Note Created Successfully',response);
+        //window.location.reload();
+        this.autorefreshs.emit()
         this.snackbar.open('Note Created Successfull','Ok',{duration:3000,horizontalPosition:'left'});
       },(error:any)=>{
         console.log('Note Creation Failed',error);
@@ -47,7 +46,10 @@ export class CreateNoteComponent implements OnInit {
     }
     this.noteForm.reset();
   }
-  Pin(){
 
+  Expand(){
+    this.show=true;
   }
+
+ 
 }
